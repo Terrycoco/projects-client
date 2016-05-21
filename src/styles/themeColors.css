@@ -1,0 +1,114 @@
+:root {
+	--darkest: 	rgb(10, 22, 18);   /* steel */ 
+	--lightest: rgb(0,0,0);  /* white */
+
+	 /* denim */
+	--primary: rgb(26, 41, 48); 
+	--primary-lighter-10: rgb(52,67,74);
+	--primary-lighter-20: rgb(77, 92, 99);
+
+	 /* gray */
+	--neutral: rgb(197, 193, 192); 
+	--neutral-lighter-10: rgb(223, 219, 218);
+	--neutral-lighter-20: rgb(248, 244, 243);
+
+	 /* marigold */
+	--accent: rgb(247, 206, 62);
+	--accent-lighter-10: rgb(255, 232, 88);
+	--accent-transp: rgba(247, 206, 62, .5);
+}
+
+
+.darkestText {
+	color: var(--darkest);
+}
+.lightestText {
+	color: var(--lightest);
+}
+.accentText {
+	color: var(--accent);
+}
+
+.primaryLightText {
+	color: var(--primary-lighter-20);
+}
+
+.primaryDarkText {
+	color: var(--primary);
+}
+
+.secondaryText {
+	color: var(--secondary);
+}
+
+
+.mainReadable {
+	background: var(--lightest);
+	color: var(--darkest);
+}
+
+.primaryDark {
+	background: var(--darkest);
+	color: var(--lightest);
+}
+
+.primaryLight {
+	background: var(--primary);
+	color: var(--lightest);
+}
+
+.secondary {
+	background: var(--neutral);
+	color: var(--lightest);
+}
+
+.accent {
+	background: var(--accent);
+	color: var(--lightest);
+}
+
+.primaryGrad {
+	background: linear-gradient( var(--lightest), var(--primary));
+	color: var(--lightest);
+}
+
+.shadow {
+	text-shadow: .8px .8px var(--neutral-lighter-20);
+}
+
+.navbarHover {
+	nav > a:hover {
+		background: var(--accent);
+	}
+}
+
+/*element defaults */
+
+body :global {
+	background: url("./gray_noise.png");
+	color: var(--lightest);
+}
+
+h1, h2, h3 {
+	color: var(--primary-lighter-10);
+}
+
+header {
+	background: var(--primary);
+}
+
+a {
+	color: var(--primary);
+}
+
+nav a {
+	background: var(--primary);
+	color: var(--accent);
+}
+nav a:hover {
+	background: var(--primary-lighter-10);
+}
+
+nav a:active {
+  background: var(--primary-lighter-10);
+}

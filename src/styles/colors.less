@@ -1,0 +1,75 @@
+@steel: rgb(10, 22, 18);
+@denim: rgb(26, 41, 48); 
+@gray: rgb(197, 193, 192); 
+@marigold: rgb(247, 206, 62);
+@white: darken(white, 5);
+
+
+//readable
+@darkest: @steel;
+@lightest: @white;
+
+ // denim
+@primary: @denim;
+@primary-lighten-10: lighten(@primary, 10);
+@primary-lighten-20: lighten(@primary, 20);
+
+ // gray
+@neutral: @gray;
+@neutral-lighten-10: lighten(@neutral, 10);
+@neutral-lighten-20: lighten(@neutral, 20);
+@neutral-transp: fadeout(@neutral, 50);
+
+ // marigold
+@accent: @marigold;
+@accent-lighten-10: lighten(@accent, 10);
+@accent-transp:fadeout(@accent, 50);
+
+
+
+@navbar-background: @primary;
+@navbar-text: @neutral-transp;
+
+
+.background-content-box {
+	background: fadeout(@lightest,20);
+	border-radius: 3pt;
+}
+
+
+// element defaults
+body {
+	background: @neutral-lighten-10;
+	color: @darkest;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: @primary-lighten-20;
+}
+
+p {
+	color: @darkest;
+}
+
+header {
+	background: @primary;
+}
+
+nav {
+	background: @primary;
+}
+
+nav > a {
+  color: @neutral-lighten-10;
+}
+
+nav > a:hover {
+	color: @lightest;
+	background: @primary-lighten-10;
+}
+
+blockquote {
+	background: fadeout(@primary,95);
+	padding: 2em;
+	border-radius: 10px;
+}

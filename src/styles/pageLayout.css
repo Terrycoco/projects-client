@@ -1,0 +1,9 @@
+.singleCol {
+	height: 100%;
+	width: 100%;
+	composes: vertFull from 'styles/flex.css';
+}
+
+.singleCol > * {
+	width: 100%;
+}
