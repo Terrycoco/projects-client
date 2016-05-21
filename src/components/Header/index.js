@@ -9,10 +9,11 @@ import styles from './index.less';
 class Header extends Component {
 
 	render() {
+		const {browser} = this.props;
 		return (
 			<FlexFrame {...this.props } element="header" flow="row wrap"  >
-      	<Logo flex="1" />
-      	<Navbar flex="75%" menuItems={this.props.menuItems} />
+      	<Logo flex={browser.lessThan.medium ? '0 0 100%' : '0 0 25%'}/>
+      	<Navbar flex="1" menuItems={this.props.menuItems} />
 			</FlexFrame>
 		);
 	}
