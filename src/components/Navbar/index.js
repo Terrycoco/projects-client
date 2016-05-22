@@ -13,8 +13,11 @@ class Navbar extends Component {
   render() {
     const {browser} = this.props;
     return (
-      <FlexFrame {...this.props} element="nav" justifyItems={ browser.lessThan.medium ? "center" : "flex-end"} className={styles.nav}>
-          {this.renderItems()}
+      <FlexFrame {...this.props} 
+            element="nav"
+            justifyItems={browser.lessThan.medium ? 'center' : 'flex-end'}
+            className={styles.nav}>
+        {this.renderItems()}
       </FlexFrame>
     );
   }

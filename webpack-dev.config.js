@@ -73,6 +73,7 @@ module.exports = {
     debug: true,
 
     plugins: [
+    
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('app.css')
       ]

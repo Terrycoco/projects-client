@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack-dev.config.js ",
-    "bundle": "webpack --config ./webpack-prod.config --progress --colors",
+    "dev": "NODE_ENV=development node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack-dev.config.js ",
+    "bundle": "NODE_ENV=production webpack --config ./webpack-prod.config --progress --colors",
     "postbundle": "npm run toProd",
+    "pretoProd": "cd $npm_package_config_prodbundle && rm -Rf",
     "toProd": "cp -a ./public/. $npm_package_config_prodbundle"
   },
   "author": "",
@@ -31,6 +32,7 @@
     "webpack": "^1.13.0"
   },
   "devDependencies": {
+    "auto-prefixer": "^0.4.2",
     "autoprefixer-loader": "^3.2.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -42,6 +44,7 @@
     "react-addons-clone-with-props": "^0.14.8",
     "react-css-modules": "^3.7.6",
     "react-hot-loader": "^1.3.0",
+    "react-prefixer": "^1.1.4",
     "react-router": "^2.4.0",
     "redux-responsive": "^2.0.0",
     "style-loader": "^0.13.1",
