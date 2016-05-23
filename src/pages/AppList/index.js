@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import FlexFrame from 'components/FlexFrame';
 import styles from './index.css';
-import {Link} from 'react-router';
-
 import Example from 'components/example-responsive';
 import Main from 'components/Main';
 
@@ -18,5 +17,11 @@ class AppsPage extends Component {
 		);
 	}
 }
+function mapStateToProps(state, ownProps) {
+	console.log('appsOwnProps:', ownProps);
+	return {
+		route: ownProps.location.pathname
+	};
+}
 
-export default AppsPage;
+export default connect(mapStateToProps)(AppsPage);

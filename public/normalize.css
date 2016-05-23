@@ -440,4 +440,5 @@ html, body {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  overflow: hidden;
 }

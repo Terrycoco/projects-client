@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import autoprefix from 'react-prefixer';
 
 function getChildStyles(props) {
-//me as child
+//me as child position MYSELF
 //can pass in flex, justifySelf, alignSelf, order
 	let styles = {};
 
@@ -27,6 +27,15 @@ function getChildStyles(props) {
 	if (props.minHeight) styles.minHeight = props.minHeight;
 	if (props.minWidth) styles.minWidth = props.minWidth;
 	if (props.width) styles.width = props.width;
+
+	  //other positioning props we may pass to position self
+  if (props.position) styles.position = props.position;
+  if (props.top) styles.top = props.top;
+  if (props.left) styles.left = props.left;
+  if (props.bottom) styles.bottom = props.bottom;
+  if (props.right) styles.right = props.right;
+  if (props.zIndex) styles.zIndex = props.zIndex;
+  if (props.overflow) styles.overflow = props.overflow;
 	return autoprefix(styles);
 }
 
@@ -43,10 +52,7 @@ function getParentStyles(props) {
   if (props.flow) {
   	parentstyles.flexFlow = props.flow;
   }
-	if (props.height) parentstyles.height = props.height;
-	if (props.minHeight) parentstyles.minHeight = props.minHeight;
-	if (props.minWidth) parentstyles.minWidth = props.minWidth;
-	if (props.width) parentstyles.width = props.width;
+
 	if (props.justifyItems) {
 		parentstyles.justifyContent = props.justifyItems;
 	}
@@ -64,7 +70,8 @@ function getParentStyles(props) {
 
 class FlexFrame extends Component {
 	render() {
-   
+		if (this.props.id==='navbar') console.log('nav before:', this.props);
+    
     const children = React.Children.map(this.props.children, (child) => {
     	const childstyles = getChildStyles(child.props);
     	return React.cloneElement(
@@ -77,7 +84,7 @@ class FlexFrame extends Component {
 
 		const elem = this.props.element || 'div';
 		const styles = getParentStyles(this.props);
-		if (this.props.id==='logo') console.log('logobefore:', this.props, 'logoafter:', styles);
+
 		return React.createElement(
 			elem,
 			{style: styles, className: this.props.className},

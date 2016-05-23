@@ -8,6 +8,8 @@ import { Router, browserHistory } from 'react-router';
 import routes from 'pages/routes';
 import reducers from './reducers/root';
 import thunkMiddleware from 'redux-thunk';
+import { syncHistoryWithStore } from 'react-router-redux';
+
 import App from 'pages/App';
 // to compile styles
 // import Styles from '../css/app.scss';
@@ -21,6 +23,11 @@ const store = createStore(
 		applyMiddleware(thunkMiddleware)
 		)
 );
+
+//create enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState: (state) => state.routing
+});
 
 // app.get('/db', function (request, response) {
 //   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -37,7 +44,7 @@ const store = createStore(
 
 ReactDOM.render(
 	<Provider store={ store }>
-		<Router history={browserHistory} routes={routes} />
+		<Router history={history} routes={routes} />
 	</Provider>
   , document.getElementById('app')
 );

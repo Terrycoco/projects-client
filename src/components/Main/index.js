@@ -5,7 +5,7 @@ import styles from './index.less';
 class Main extends Component {
   render() {
 		return (
-			<FlexFrame flow="column nowrap">
+			<FlexFrame {...this.props} flow="column nowrap" className={styles.content}>
 		    <h1>This is a Content Frame</h1>
 		    <h4>It grows to fill, it is T-B, it is a scroll. </h4>
 		    <blockquote>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...</blockquote>

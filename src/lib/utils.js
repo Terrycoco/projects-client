@@ -9,25 +9,21 @@ export function mergeStyles() {
 	return output;
 }
 
-// function that will do a "magic" XSS-ish trick
-export function multipleValues(style) {
-  var result = {};
-  // feel free to replace for..in+hasOwnProperty with for..of
-  for (var key in style) { 
-    if (style.hasOwnProperty(key)) {
-      var value = style[key];
-      if (Array.isArray(value)) {
-        // by adding semicolon at the begging we applying
-        // a trick that ofthen used in XSS attacks
-        result[key] = ';' + key + ':' + value.join(';' + key + ':');
-      } else if (typeof value === "object" && value !== null) {
-        // here we doing recursion
-        result[key] = multipleValues(value);
-      } else {
-        // and here we simply copying everything else
-        result[key] = value;
-      }
-    }
-  }
-  return result;
-}
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
